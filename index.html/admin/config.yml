@@ -1,0 +1,24 @@
+backend:
+  name: github
+  repo: mohaldarshrabon/scribe-global
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "articles"
+    label: "Articles"
+    folder: "articles"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug URL", name: "slug", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["Literature", "Poetry", "Biography", "Philosophy"] }
+      - { label: "Language", name: "language", widget: "select", options: ["English", "Bangla"] }
+      - { label: "Featured Image", name: "thumbnail", widget: "image" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string", default: "Scribe Editorial" }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown" }
