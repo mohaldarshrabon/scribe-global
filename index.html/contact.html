@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — SCRIBE GLOBAL</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { midnight: '#07090E', darkSurface: '#0E131F', darkBorder: '#1A2234', gold: '#D4AF37', softWhite: '#F8FAFC', editorialMuted: '#94A3B8' } } }
+    }
+  </script>
+</head>
+<body class="bg-midnight text-softWhite font-sans min-h-screen flex flex-col justify-between">
+  <header class="border-b border-darkBorder bg-midnight/90 py-6 px-6">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <a href="/" class="text-xl font-serif font-black tracking-widest text-softWhite hover:text-gold transition">SCRIBE <span class="text-gold">GLOBAL</span></a>
+      <a href="/" class="text-xs uppercase text-editorialMuted hover:text-gold transition">← Back to Home</a>
+    </div>
+  </header>
+
+  <main class="max-w-xl mx-auto px-6 py-12 flex-1 w-full space-y-6">
+    <h1 class="text-3xl font-serif font-bold text-softWhite border-b border-darkBorder pb-4">Contact Editorial Team</h1>
+    <p class="text-editorialMuted text-sm">Have an inquiry, feedback, or a submission proposal? Get in touch with us.</p>
+    
+    <form class="space-y-4 pt-2" onsubmit="event.preventDefault(); alert('Thank you! Message received.');">
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-editorialMuted mb-1.5">Your Name</label>
+        <input type="text" required class="w-full bg-darkSurface border border-darkBorder text-softWhite px-4 py-2.5 text-sm focus:border-gold outline-none">
+      </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-editorialMuted mb-1.5">Your Email</label>
+        <input type="email" required class="w-full bg-darkSurface border border-darkBorder text-softWhite px-4 py-2.5 text-sm focus:border-gold outline-none">
+      </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-editorialMuted mb-1.5">Message</label>
+        <textarea rows="4" required class="w-full bg-darkSurface border border-darkBorder text-softWhite px-4 py-2.5 text-sm focus:border-gold outline-none"></textarea>
+      </div>
+      <button type="submit" class="px-6 py-3 bg-gold text-midnight font-bold uppercase text-xs hover:bg-gold/80 transition">Send Dispatch</button>
+    </form>
+  </main>
+
+  <footer class="border-t border-darkBorder py-6 text-center text-xs text-editorialMuted">
+    © 2026 SCRIBE GLOBAL. All rights reserved.
+  </footer>
+</body>
+</html>
