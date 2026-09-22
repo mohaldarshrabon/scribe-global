@@ -294,13 +294,13 @@
             const getField = (name) => {
               const regex = new RegExp(`${name}:\\s*["']?(.*?)["']?\\n`, 'i');
               const match = meta.match(regex);
-              return match ? match[1] : '';
+              return match ? match[1].trim() : '';
             };
 
             allArticles.push({
               title: getField('title') || 'Untitled',
               category: getField('category') || 'General',
-              language: (getField('language') || 'English').toLowerCase(),
+              language: getField('language') || '',
               summary: getField('summary') || '',
               thumbnail: getField('thumbnail') || '',
               author: getField('author') || 'Scribe Editorial',
@@ -321,9 +321,15 @@
 
     function renderArticles() {
       const container = document.getElementById('articles-container');
-      const targetLang = currentLocale === 'bn' ? 'bangla' : 'english';
       
-      const filtered = allArticles.filter(a => a.language === targetLang || !a.language);
+      const filtered = allArticles.filter(a => {
+        const lang = (a.language || '').toLowerCase().trim();
+        if (currentLocale === 'bn') {
+          return lang === 'bangla' || lang === 'bn' || lang === 'bengali';
+        } else {
+          return lang === 'english' || lang === 'en';
+        }
+      });
 
       if (filtered.length === 0) {
         container.innerHTML = `
@@ -335,7 +341,7 @@
       }
 
       container.innerHTML = filtered.map((item, idx) => `
-        <article class="bg-darkSurface border border-darkBorder hover:border-gold/50 transition duration-300 flex flex-col justify-between p-5 cursor-pointer" onclick="openReader(${idx})">
+        <article class="bg-darkSurface border border-darkBorder hover:border-gold/50 transition duration-300 flex flex-col justify-between p-5 cursor-pointer" onclick="openReader(${allArticles.indexOf(item)})">
           <div>
             ${item.thumbnail ? `<div class="h-44 w-full overflow-hidden mb-4"><img src="${item.thumbnail}" class="w-full h-full object-cover"></div>` : ''}
             <span class="text-gold text-[10px] uppercase font-bold tracking-wider">${item.category}</span>
